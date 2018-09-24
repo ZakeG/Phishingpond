@@ -14,7 +14,11 @@ td{
     color: black;
 	border: 2px #d1d1d1 solid;
 }
-td:hover{
+p{
+    margin-top: 2px;
+    margin-bottom: 2px;
+}
+#table td:hover{
 	background-color: #333333;
 }
 
@@ -46,18 +50,26 @@ td:hover{
 #info{
     margin-left:-2px;
     float:right;
-    text-align: center;
 }
 
 #title{
+    text-align: center;
     width:250px;
     border: 2px #d1d1d1 solid;
     margin-left: 2px;
     margin-right: 2px;
 }
 #desc{
-    height:277px;
+    padding:10px;
+    text-align: left;
+    vertical-align: top;
+    height:259px;
 }
 #sec{
+    vertical-align: top;
+    text-align: center;
     height:107px;
+}
+#sec p {
+    margin-bottom: 5px;
 }
