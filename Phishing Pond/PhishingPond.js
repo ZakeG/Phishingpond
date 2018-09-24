@@ -1,28 +1,49 @@
 $(document).ready(function() {
 
-	var targetedCell = false;
+	var activeCell = false;
+	var targetedCell;
 
 	$("body").on("click", "body", function() {
-		if(targetedCell == true){
+		if(activeCell == true){
 			document.getElementById("myDropdown").classList.toggle("show");
-			//targetedCell = false;
+			//activeCell = false;
 		}
 	});
 
+	$("td").each(function() {
+		$(this).html($(this).attr('id'))//$(this).attr('id').toString();
+  	});
+
 	$("#table").on("click", "td", function() {
-		if(targetedCell == false){
+		if(activeCell == false){
      	document.getElementById("myDropdown").classList.toggle("show");
-     	targetedCell = true;
-     } else {
-     	document.getElementById("myDropdown").classList.toggle("show");
-     	targetedCell = false;
-     }
+     	activeCell = true;
+    } else {
+    	document.getElementById("myDropdown").classList.toggle("show");
+     	activeCell = false;
+    }
+
+	$("#link1").on("click", function(){ 
+		alert("wan");
+
+	})
+	$("#link2").on("click", function(){ 
+		alert("tu");
+
+	})
+	$("#link3").on("click", function(){ 
+		alert("tree");
+
+	})
+
+
+
      	 
    });
 		$("body").mousemove(function( event ) {
-			if(targetedCell == false){
-				$( "#myDropdown").css('left', event.pageX-10+'px');
-			 	$( "#myDropdown").css('top', event.pageY-10+'px');
+			if(activeCell == false){
+				$( "#myDropdown").css('left', event.pageX-1+'px');
+			 	$( "#myDropdown").css('top', event.pageY+6+'px');
 		}
 	});
 });

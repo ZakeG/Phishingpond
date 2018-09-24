@@ -1,13 +1,17 @@
 body{
 	background-color: #111111;
+    display: flex;
 }
 table{
 	background-color: #F1F1F1;
 	table-layout: fixed;
 }
 td{
-	padding: 20px;
-	text-align: center;
+	width: 50px;
+    height: 50px;
+	text-align: center;    
+    word-wrap: break-word;
+    color: black;
 	border: 2px #d1d1d1 solid;
 }
 td:hover{
@@ -38,3 +42,22 @@ td:hover{
 .dropdown-content a:hover {background-color: #ddd}
 
 .show {display:block;}
+
+#info{
+    margin-left:-2px;
+    float:right;
+    text-align: center;
+}
+
+#title{
+    width:250px;
+    border: 2px #d1d1d1 solid;
+    margin-left: 2px;
+    margin-right: 2px;
+}
+#desc{
+    height:277px;
+}
+#sec{
+    height:107px;
+}
