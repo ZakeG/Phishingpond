@@ -3,6 +3,28 @@ $(document).ready(function() {
 	var activeCell = false;
 	var targetedCell;
 
+	// items of the list
+	var bird = {name:'Mockingbird'};
+	var cat = {name:'Keyboard'};
+	var dog = {name:'Fort'};
+	var duck = {name:'Scrooge'};
+	 
+	// the linked-list itself
+	var animals = {
+	    head : bird
+	};
+	// each item of the list stores reference to the next one
+	bird.next = cat;
+	cat.next = dog;
+	dog.next = duck;
+	var animal = animals.head;
+	while (animal) {
+    alert(animal.name);
+    animal = animal.next;
+	}
+
+
+
 	$("body").on("click", "body", function() {
 		if(activeCell == true){
 			document.getElementById("myDropdown").classList.toggle("show");
@@ -24,7 +46,7 @@ $(document).ready(function() {
     }
 
 	$("#link1").on("click", function(){ 
-		alert("wan");
+		alert("w3n");
 
 	})
 	$("#link2").on("click", function(){ 
