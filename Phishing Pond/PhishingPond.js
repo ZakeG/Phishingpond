@@ -5,8 +5,10 @@ $(document).ready(function() {
 	var targetedCell;
 	var cellDesc;
 	var info;
+	var curID;
+	var activeState = false;
 
-	var cellInfo = [["Company 1", "a small company", "training 1 <br> training 2"],
+	var cellInfo = [["Company 1", "a small company", "training 1 <br> training 2",],
 					["Company 2", "a medium company", "training 3 <br> training 4"],
 					["Company 3", "a big company", "training 5 <br> training 6"],
 					["Company 4", "an even bigger company", "training 7 <br> training 8"],
@@ -30,24 +32,28 @@ $(document).ready(function() {
 	*/
 	$("#table td").each(function() {
 		$(this).html($(this).attr('id'))//$(this).attr('id').toString();
-        info = $(this)[ 0 ];
-        jQuery.data( info, "test", {
+        	info = $(this)[ 0 ];
+        	jQuery.data( info, "test", {
 			Title: cellInfo[parseInt($(this).index())][0],
 			Description: cellInfo[parseInt($(this).index())][1],
-			SecInfo: cellInfo[parseInt($(this).index())][2]
+			SecInfo: cellInfo[parseInt($(this).index())][2]	
 		}); 
   	});
 
 	$("#table").on("click", "td", function() {
-        targetedCell = $(this).attr('id');
         info = $(this)[ 0 ];
         $('#title').html(jQuery.data(info, "test").Title);
         $('#desc').html(jQuery.data(info,"test").Description);
         $('#secText').html(jQuery.data(info,"test").SecInfo);
-     	document.getElementById("buttons").classList.toggle("show");
-    });
-    $("#table").mouseleave(function(){
-    	document.getElementById("buttons").classList.toggle("show");
+        if(targetedCell != $(this).attr('id') && activeState == false){
+    		document.getElementById("buttons").classList.toggle("show");
+    		activeState = true;
+    	}
+		else if(targetedCell == $(this).attr('id') || targetedCell == undefined){
+     		document.getElementById("buttons").classList.toggle("show");
+     		activeState = false;
+    	}
+     	targetedCell = $(this).attr('id');
     });
 
 	$("#link1").on("click", function(){
