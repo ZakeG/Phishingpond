@@ -30,12 +30,14 @@ p{
 	background-color: #999999;
 }
 #buttons{
-    width:100%;
+    width: 100%;
 }
 #buttons td:hover{
     background-color: #999999;
 }
-.show {display:block;}
+.show {
+    display: none;
+}
 
 #info{
     margin-left:-2px;

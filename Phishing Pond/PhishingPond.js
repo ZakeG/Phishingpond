@@ -1,5 +1,7 @@
 $(document).ready(function() {
 
+   	document.getElementById("buttons").classList.toggle("show");
+
 	var targetedCell;
 	var cellDesc;
 	var info;
@@ -43,6 +45,9 @@ $(document).ready(function() {
         $('#desc').html(jQuery.data(info,"test").Description);
         $('#secText').html(jQuery.data(info,"test").SecInfo);
      	document.getElementById("buttons").classList.toggle("show");
+    });
+    $("#table").mouseleave(function(){
+    	document.getElementById("buttons").classList.toggle("show");
     });
 
 	$("#link1").on("click", function(){
