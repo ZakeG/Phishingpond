@@ -6,14 +6,7 @@
 		<link rel="stylesheet" href="PhishingPond.css">
 	 </head>
 	<body> 
-		<div class="dropdown">
-			<div id="myDropdown" class="dropdown-content">
-		    	<a id="link1">Link 1</a>
-		    	<a id="link2">Link 2</a>
-		    	<a id="link3">Link 3</a>
-		  	</div>
-		</div>
-		<div>
+		<div id="content">
 			<table id="table">
 				<tr id="r1">
 					<td id="c00"></td>
@@ -96,18 +89,31 @@
 					<td id="c77"></td>
 				</tr>
 			</table>
+			<div>
+				<table id="info">
+					<tr> <td id="title"> Title </td> </tr>
+					<tr> <td id="desc"> A whole bunch of text meant to show how the text wraps inside this container for scientific purposes. </td> </tr>
+					<tr> <td id="sec"> 
+						<h> Security </h>
+						<hr width="100" size ="1">
+						<p id="secText"> Super secret email training </p>
+					</td> </tr>
+				</table>
+			</div>
 		</div>
-		<div>
-			<table id="info">
-				<tr> <td id="title"> Title </td> </tr>
-				<tr> <td id="desc"> A whole bunch of text meant to show how the text wraps inside this container for scientific purposes. </td> </tr>
-				<tr> <td id="sec"> 
-					<h> Security </h>
-					<hr width="100" size ="1">
-					<p id="secText"> Super secret email training </p>
-				</td> </tr>
-			</table>
-		</div>
+		<table style="margin-top:-2px;">
+			<tr> <td id="bar"> 
+				<table id="buttons">
+					<tr>
+						<td id="link1"> </td>
+						<td id="link2"> </td>
+					<tr>
+						<td id="link3"> </td>
+						<td id="link4"> </td>
+					</tr>
+				</table>
+			</td> </tr>
+		</table>
 		<script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 		<script src="PhishingPond.js"></script>
 	</body>
