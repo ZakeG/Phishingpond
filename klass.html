@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>JavaScript Objects</h2>
+
+<p id="demo"></p>
+ 
+<script>
+// Create an object:
+var q1 = {Title:"Epicsson ", Description:"Headless chickens playing russian roulette", SecInfo:"Insufficient ability to recognize suspicious emails or links"};
+var q2 = {Title:"UberHard ", Description:"Specialists in making dumb things hard for its community", SecInfo:"Irresponsible manpower will click anything"};
+var q3 = {Title:"NinPedo ", Description:"Alienates its community to tell themselves that aliens are real",
+SecInfo:"Does not know what makes a website look legit."};
+var q5 = {Title:"TSV", Description:"Technological Geniuses", SecInfo:"Too good for Antivirus"}; 
+var q4 = {Title:"ActiPisson", Description:"Dolla dolla bill y'all", SecInfo:"Who needs antivirus when you have dosh"};
+var q6 = {Title:"Whowhy", Description:"Underage chinese manpower", SecInfo: "Personell wont be able to tell whats real and whats not"};
+var q7 = {Title:"crApple", Description: "CostEfficient products", SecInfo: "VirusImmune"};
+var q8 = {Title:"Volvo", Description: "Too smart to count to three, bugs are a feature, etc", SecInfo:"Carebears that read all mails and click their links"};
+var q9 = {Title:"Blizzfart", Description:"Description and Game balance coming soon tm", SecInfo:"Does not respond to spam"};
+var q10 = {Title:"Parapl0x", Description:"Only cares about big and grand things", SecInfo: "What is a trojan they have never been in our games"};
+var q11 = {Title:"MiniShit", Description: "If money cant buy happiness then why are we so happy with our shitty OS", SecInfo: "Doesn't pay for their own Anti-virus software"};
+var q12 = {Title: "Clapinum Games", Description: "makes their own waifus to clap to", SecInfo: "Every link is a potential Waifu"};
+var q13 = {Title: "Circle epix", Description: "Wanders in circles until the product is complete", SecInfo: "takes every mail very seriously"};
+var q14 = {Title: "AE", Description: "Its in the box", SecInfo: "Does not have an email so cant click links"};
+var q15 = {Title: "Cryot Games", Description: "Makes stupid game for stupid community", SecInfo: "Reads mail in hope of finding good game design ideas"};
+var q16 = {Title: " Affinite Ward", Description: "Quantity over Quality", SecInfo: "Too smart to read mails"};
+var q17 = {Title: "Charity Technology", Description: "Everything is free we promise", SecInfo: "Well-versed in mailing malware to customers"};
+var q18 = {Title: "Creative name Studio", Description: "Comes up with great new ideas all the time haha", SecInfo: "Too creative to not have Virusprotection"};
+var q19 = {Title: "SwonkAndBonk corps", Description: "Spooky Scary Skeletons", SecInfo: "How can viruses be real if our corporation is not real"};
+var q20 = {Title: "Antisemitism AB", Description: "We are pure and not at all edgy hahAAA", SecInfo: "Too pure for viruses"};
+var q21 = {Title: "FlintStoners", Description: "Do we have to write things here", SecInfo: "Bro i love mails they are like texts in another world of reality"};
+
+var corps = [q1, q2, q3, q4, q5, q6, q7, q8, q9, q10, q11, q12, q13, q14, q15, q16, q17, q18, q19, q20, q21];
+
+// Display some data from the object:
+function AddElement(){
+var using = Math.floor(Math.random() * corps.length);
+
+document.getElementById("demo").innerHTML +=  corps[using].Title;
+corps.splice(using, 1);
+}
+AddElement();
+AddElement();
+AddElement();
+AddElement();
+AddElement();
+AddElement();
+AddElement();
+
+</script>
+
+</body>
+</html>
