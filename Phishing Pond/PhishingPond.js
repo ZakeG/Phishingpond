@@ -12,17 +12,20 @@ $(document).ready(function() {
 	}
    	//document.getElementById("buttonHolder").classList.toggle("show");
    	function hideyhide(){
-   		$("#c03").hide();	
+   		$("#c03").css("visibility", "hidden");	
    	}
    	function showyshow(){
-   		$("#c03").show();
+   		$("#c03").css("visibility", "visible");
    	}
+
 
 	var targetedCell;
 	var cellDesc;
 	var info;
 	var curID;
 	var activeState = false;
+
+	var infectedLevel = 0;
 
 	var cellInfo = [["Company 1", "a small company", "1, 2",],
 					["Company 2", "a medium company", "training 3 <br> training 4"],
@@ -33,6 +36,10 @@ $(document).ready(function() {
 					["Company 7", "an absolutely ridiculously big company", "training 13 <br> training 14"],
 					["Company 8", "a company", "training 15 <br> training 16"]];	
 	var SecurityLevels = [""]
+
+	var cellTest = [["c00"], ["c10"], ["c11"], ["c21", "c12"],["c13", "c03", "c31"]];	
+
+
 /*
 	$("#table td").click(function() {     
 
@@ -47,15 +54,36 @@ $(document).ready(function() {
     	}
     });
 	*/
-	$("#table td").each(function() {
-		$(this).html($(this).attr('id'))//$(this).attr('id').toString();
-        	info = $(this)[ 0 ];
-        	jQuery.data( info, "test", {
-			Title: cellInfo[parseInt($(this).index())][0],
-			Description: cellInfo[parseInt($(this).index())][1],
-			SecInfo: cellInfo[parseInt($(this).index())][2]
-		}); 
-  	});
+
+	function assignData(){
+		$("#table td").each(function() {
+			if($(this).attr('id') != "c00") $(this).css('visibility', 'hidden');
+			$(this).html($(this).attr('id'))//$(this).attr('id').toString();
+	        	info = $(this)[ 0 ];
+	        	jQuery.data( info, "test", {
+				Title: cellInfo[parseInt($(this).index())][0],
+				Description: cellInfo[parseInt($(this).index())][1],
+				SecInfo: cellInfo[parseInt($(this).index())][2]
+			}); 
+        });
+	}
+
+	assignData();
+
+	function checkGrid(){
+		$("#table td").each(function() {
+			for(i = 0; i < cellTest[infectedLevel].length; i++){
+				if($(this).attr('id') == cellTest[infectedLevel][i]) {
+	        	$(this).css("visibility", "visible");
+				}
+	        }
+	  	});
+	}
+
+	function passedLevel(){
+   		infectedLevel ++;
+   		checkGrid();
+   	}
 
 	$("#table").on("click", "td", function() {
         info = $(this)[ 0 ];
@@ -76,7 +104,7 @@ $(document).ready(function() {
     });
 
 	$("#link1").on("click", function(){
-		hideyhide();
+		passedLevel();
 	})
 	$("#link2").on("click", function(){ 
 		showyshow();
