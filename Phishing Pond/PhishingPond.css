@@ -35,9 +35,15 @@ p{
 #buttons td:hover{
     background-color: #999999;
 }
+#buttonHolder{
+    margin-top: -125px;
+    transition: 0.3s;
+}/*
 .show {
-    display: none;
-}
+    margin-top: 50px;
+    transition: 0.3s;
+
+    }*/
 
 #info{
     margin-left:-2px;

@@ -1,6 +1,22 @@
 $(document).ready(function() {
 
-   	document.getElementById("buttons").classList.toggle("show");
+	var top = $("buttonHolder").css('margin-top');
+
+	function TransitionOptions() {
+		if($("#buttonHolder").css("margin-top") == "0px"){
+			$("#buttonHolder").css("margin-top", "-125px");
+		}
+		else if($("#buttonHolder").css("margin-top") == "-125px"){
+			$("#buttonHolder").css("margin-top", "0px");
+		}
+	}
+   	//document.getElementById("buttonHolder").classList.toggle("show");
+   	function hideyhide(){
+   		$("#c03").hide();	
+   	}
+   	function showyshow(){
+   		$("#c03").show();
+   	}
 
 	var targetedCell;
 	var cellDesc;
@@ -8,7 +24,7 @@ $(document).ready(function() {
 	var curID;
 	var activeState = false;
 
-	var cellInfo = [["Company 1", "a small company", "training 1 <br> training 2",],
+	var cellInfo = [["Company 1", "a small company", "1, 2",],
 					["Company 2", "a medium company", "training 3 <br> training 4"],
 					["Company 3", "a big company", "training 5 <br> training 6"],
 					["Company 4", "an even bigger company", "training 7 <br> training 8"],
@@ -16,6 +32,7 @@ $(document).ready(function() {
 					["Company 6", "a humongous company", "training 11 <br> training 12"],
 					["Company 7", "an absolutely ridiculously big company", "training 13 <br> training 14"],
 					["Company 8", "a company", "training 15 <br> training 16"]];	
+	var SecurityLevels = [""]
 /*
 	$("#table td").click(function() {     
 
@@ -36,7 +53,7 @@ $(document).ready(function() {
         	jQuery.data( info, "test", {
 			Title: cellInfo[parseInt($(this).index())][0],
 			Description: cellInfo[parseInt($(this).index())][1],
-			SecInfo: cellInfo[parseInt($(this).index())][2]	
+			SecInfo: cellInfo[parseInt($(this).index())][2]
 		}); 
   	});
 
@@ -45,30 +62,24 @@ $(document).ready(function() {
         $('#title').html(jQuery.data(info, "test").Title);
         $('#desc').html(jQuery.data(info,"test").Description);
         $('#secText').html(jQuery.data(info,"test").SecInfo);
-        if(targetedCell != $(this).attr('id') && activeState == false){
-    		document.getElementById("buttons").classList.toggle("show");
+        if(activeState == false){
+        	TransitionOptions();
+    		//document.getElementById("buttonHolder").classList.toggle("show");
     		activeState = true;
     	}
-		else if(targetedCell == $(this).attr('id') || targetedCell == undefined){
-     		document.getElementById("buttons").classList.toggle("show");
+		else if((targetedCell == $(this).attr('id') || targetedCell == undefined) && activeState == true){
+			TransitionOptions()
+     		//document.getElementById("buttonHolder").classList.toggle("show");
      		activeState = false;
     	}
      	targetedCell = $(this).attr('id');
     });
 
 	$("#link1").on("click", function(){
-		if(jQuery.data(info,"test").secInfo.search("training 1") != -1)
-			alert("resisted");
-		else{
-			alert("infected");
-		}
+		hideyhide();
 	})
 	$("#link2").on("click", function(){ 
-		if(jQuery.data(info,"test").secInfo.search("training 2") != -1)
-			alert("resisted")
-		else{
-			alert("infected")
-		}
+		showyshow();
 	})
 	$("#link3").on("click", function(){ 
 		if(jQuery.data(info,"test").secInfo.search("training 3") != -1)
