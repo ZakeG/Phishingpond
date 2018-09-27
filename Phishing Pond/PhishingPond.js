@@ -27,14 +27,16 @@ $(document).ready(function() {
 
 	var infectedLevel = 0;
 
-	var cellInfo = [["Company 1", "a small company", "1, 2",],
-					["Company 2", "a medium company", "training 3 <br> training 4"],
-					["Company 3", "a big company", "training 5 <br> training 6"],
-					["Company 4", "an even bigger company", "training 7 <br> training 8"],
-					["Company 5", "a massive company", "training 9 <br> training 10"],
-					["Company 6", "a humongous company", "training 11 <br> training 12"],
-					["Company 7", "an absolutely ridiculously big company", "training 13 <br> training 14"],
-					["Company 8", "a company", "training 15 <br> training 16"]];	
+	var cellInfo = [
+					[["Company 1"], ["a small company"], [1, 2],["hello", "it", "is", "me"]],
+					[["Company 2"], ["a medium company"], [1, 2],["hello", "it", "is", "me"]],
+					[["Company 3"], ["a big company"], [1, 2],["hello", "it", "is", "me"]],
+					[["Company 4"], ["an even bigger company"], [1, 2],["hello", "it", "is", "me"]],
+					[["Company 5"], ["a massive company"], [1, 2],["hello", "it", "is", "me"]],
+					[["Company 6"], ["a humongous company"], [1, 2],["hello", "it", "is", "me"]],
+					[["Company 7"], ["an absolutely ridiculously big company"], [1, 2],["hello", "it", "is", "me"]],
+					[["Company 8"], ["a company"], [1, 2],["hello", "it", "is", "me"]]
+					];	
 	var SecurityLevels = [""]
 
 	var cellTest = [["c00"], ["c10"], ["c11"], ["c21", "c12"],["c13", "c03", "c31"]];	
@@ -61,9 +63,13 @@ $(document).ready(function() {
 			$(this).html($(this).attr('id'))//$(this).attr('id').toString();
 	        	info = $(this)[ 0 ];
 	        	jQuery.data( info, "test", {
-				Title: cellInfo[parseInt($(this).index())][0],
-				Description: cellInfo[parseInt($(this).index())][1],
-				SecInfo: cellInfo[parseInt($(this).index())][2]
+				Title: cellInfo[parseInt($(this).index())][0][0],
+				Description: cellInfo[parseInt($(this).index())][1][0],
+				SecInfo: cellInfo[parseInt($(this).index())][2][0]+cellInfo[parseInt($(this).index())][2][1],
+				Answer1: cellInfo[parseInt($(this).index())][3][0],
+				Answer2: cellInfo[parseInt($(this).index())][3][1],
+				Answer3: cellInfo[parseInt($(this).index())][3][2],
+				Answer4: cellInfo[parseInt($(this).index())][3][3]
 			}); 
         });
 	}
@@ -90,6 +96,10 @@ $(document).ready(function() {
         $('#title').html(jQuery.data(info, "test").Title);
         $('#desc').html(jQuery.data(info,"test").Description);
         $('#secText').html(jQuery.data(info,"test").SecInfo);
+        $('#link1').html(jQuery.data(info,"test").Answer1);
+        $('#link2').html(jQuery.data(info,"test").Answer2);
+        $('#link3').html(jQuery.data(info,"test").Answer3);
+        $('#link4').html(jQuery.data(info,"test").Answer4);
         if(activeState == false){
         	TransitionOptions();
     		//document.getElementById("buttonHolder").classList.toggle("show");
