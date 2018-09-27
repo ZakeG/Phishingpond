@@ -5,9 +5,11 @@ $(document).ready(function() {
 	function TransitionOptions() {
 		if($("#buttonHolder").css("margin-top") == "0px"){
 			$("#buttonHolder").css("margin-top", "-125px");
+			$("#buttonHolder td").css("color", "#F1F1F1");
 		}
 		else if($("#buttonHolder").css("margin-top") == "-125px"){
 			$("#buttonHolder").css("margin-top", "0px");
+			$("#buttonHolder td").css("color", "black");
 		}
 	}
    	//document.getElementById("buttonHolder").classList.toggle("show");
@@ -27,8 +29,8 @@ $(document).ready(function() {
 
 	var infectedLevel = 0;
 
-	var cellInfo = [
-					[["Company 1"], ["a small company"], [1, 2],["hello", "it", "is", "me"]],
+	var cellInfo = [	/*Name*/ /*Description*/ /*Security options*/ /*Answer options*/ 
+					[["Company 1"],["a small company"],[1, 2],["hello", "it", "is", "me"]],
 					[["Company 2"], ["a medium company"], [1, 2],["hello", "it", "is", "me"]],
 					[["Company 3"], ["a big company"], [1, 2],["hello", "it", "is", "me"]],
 					[["Company 4"], ["an even bigger company"], [1, 2],["hello", "it", "is", "me"]],
@@ -59,17 +61,21 @@ $(document).ready(function() {
 
 	function assignData(){
 		$("#table td").each(function() {
+			var tempString = "";
 			if($(this).attr('id') != "c00") $(this).css('visibility', 'hidden');
 			$(this).html($(this).attr('id'))//$(this).attr('id').toString();
-	        	info = $(this)[ 0 ];
-	        	jQuery.data( info, "test", {
-				Title: cellInfo[parseInt($(this).index())][0][0],
-				Description: cellInfo[parseInt($(this).index())][1][0],
-				SecInfo: cellInfo[parseInt($(this).index())][2][0]+cellInfo[parseInt($(this).index())][2][1],
-				Answer1: cellInfo[parseInt($(this).index())][3][0],
-				Answer2: cellInfo[parseInt($(this).index())][3][1],
-				Answer3: cellInfo[parseInt($(this).index())][3][2],
-				Answer4: cellInfo[parseInt($(this).index())][3][3]
+			for(i = 0; i < cellInfo[parseInt($(this).index())][2].length; i++)				
+				tempString += cellInfo[parseInt($(this).index())][2][i] + "<br>";
+        	info = $(this)[ 0 ];
+        	jQuery.data( info, "test", {
+			Title: cellInfo[parseInt($(this).index())][0][0],
+			Description: cellInfo[parseInt($(this).index())][1][0],
+			SecInfo: tempString,
+			Option1: cellInfo[parseInt($(this).index())][3][0],
+			Option2: cellInfo[parseInt($(this).index())][3][1],
+			Option3: cellInfo[parseInt($(this).index())][3][2],
+			Option4: cellInfo[parseInt($(this).index())][3][3],
+			//Answer: cellInfo[parseInt($(this).index())][4][0]
 			}); 
         });
 	}
@@ -96,10 +102,10 @@ $(document).ready(function() {
         $('#title').html(jQuery.data(info, "test").Title);
         $('#desc').html(jQuery.data(info,"test").Description);
         $('#secText').html(jQuery.data(info,"test").SecInfo);
-        $('#link1').html(jQuery.data(info,"test").Answer1);
-        $('#link2').html(jQuery.data(info,"test").Answer2);
-        $('#link3').html(jQuery.data(info,"test").Answer3);
-        $('#link4').html(jQuery.data(info,"test").Answer4);
+        $('#link1').html(jQuery.data(info,"test").Option1);
+        $('#link2').html(jQuery.data(info,"test").Option2);
+        $('#link3').html(jQuery.data(info,"test").Option3);
+        $('#link4').html(jQuery.data(info,"test").Option4);
         if(activeState == false){
         	TransitionOptions();
     		//document.getElementById("buttonHolder").classList.toggle("show");
@@ -114,10 +120,11 @@ $(document).ready(function() {
     });
 
 	$("#link1").on("click", function(){
+		if($(this).text != cellInfo[parseInt($(this).index())][3][0])
 		passedLevel();
 	})
-	$("#link2").on("click", function(){ 
-		showyshow();
+	$("#link2").on("click", function(){
+
 	})
 	$("#link3").on("click", function(){ 
 		if(jQuery.data(info,"test").secInfo.search("training 3") != -1)

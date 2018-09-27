@@ -20,6 +20,7 @@ p{
 
 #content{
     display: flex;
+    user-select: none;
 }
 #bar{
     width:710.5px;
@@ -37,8 +38,10 @@ p{
     background-color: #999999;
 }
 #buttonHolder{
+    user-select: none;
     margin-top: -125px;
     transition: 0.3s;
+    color: blue;
 }/*
 .show {
     margin-top: 50px;
