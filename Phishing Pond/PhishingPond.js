@@ -7,14 +7,15 @@ $(document).ready(function() {
 	var tempNum = 0;
 	var infectedLevel = 0;
 	var cellInfo = [	/*Name*/ /*Description*/ /*Security options*/ /*Answer options*/ 
-					[["Company 1"],["a small company"],[1],["hello", "it", "is", "me"]],
-					[["Company 2"], ["a medium company"], [1, 3],["hello", "it", "is", "me"]],
-					[["Company 3"], ["a big company"], [2],["hello", "it", "is", "me"]],
-					[["Company 4"], ["an even bigger company"], [2, 3],["hello", "it", "is", "me"]],
-					[["Company 5"], ["a massive company"], [1, 2, 3],["hello", "it", "is", "me"]],
-					[["Company 6"], ["a humongous company"], [1, 3],["hello", "it", "is", "me"]],
-					[["Company 7"], ["an absolutely ridiculously big company"], [2, 3, 4],["hello", "it", "is", "me"]],
-					[["Company 8"], ["a company"], [1, 2, 4],["hello", "it", "is", "me"]]
+					[["Bobs burgers"],["A small restaurant"],[1],["Fraud mail asking for credentials", "Malware mail disguised as business inquiry", "Spoofed link leading to a faked website", "Normal link leading to an infected website"]],
+					[["Farmers Market"], ["A small company occupying the trading and farming markets of a city"], [1, 3],["Fraud mail asking for credentials", "Spam fraud mail", "Malware mail disguised as business inquiry", "Malware mail disguised as business inquiry"]],
+					[["Caldian Storage"], ["A large storage company that owns 80% of the storage housing in their country."], [2],["Fraud mail asking for credentials", "Malware mail", "Spoofed link inserted into email leading to a dropbox", "Fraud mail"]],
+					[["DSL shipping"], ["A large shipping company with an estimated net value of $200 mil dollars"], [2, 3],["hello", "it", "is", "me"]],
+					[["Wutaphone"], ["A large telecom company with over 5 million active subscribers."], [1, 2, 3],["hello", "it", "is", "me"]],
+					[["Kambrian stockmarket"], ["4% of Areopas networth is traded every year through this stockmarket."], [1, 3],["hello", "it", "is", "me"]],
+					[["Etalian government"], ["A highly secure organisation overlooking the entirety of Etaly."], [2, 3, 4],["hello", "it", "is", "me"]],
+					[["Bank of OSA"], ["9th largest bank in the world. They transfer and handle billions of various currencies every single minute."], [1, 2, 4],["hello", "it", "is", "me"]]
+					
 					];	
 	var SecurityLevels = ["Spam mail filter", "Malware detection", "Spoofed link training", "Anti-spear phishing training"];
 	var cellTest = [["c00"], ["c10"], ["c11"], ["c21", "c12"],["c13"]];	
