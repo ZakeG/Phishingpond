@@ -1,4 +1,5 @@
 $(document).ready(function() {
+	$("#c00").append('<img src="Building1.png" height="40px" width="40px"></img>');
 	var targetedCell;
 	var cellDesc;
 	var info;
@@ -19,6 +20,7 @@ $(document).ready(function() {
 					];	
 	var SecurityLevels = ["Spam mail filter", "Malware detection", "Spoofed link training", "Anti-spear phishing training"];
 	var cellTest = [["c00"], ["c10"], ["c11"], ["c21", "c12"],["c13"]];	
+	var cellImage=["Building1.png", "Building2.png", "Building3.png", "Building4.png", "Building5.png", "Building6.png", "Building7.png", "Building8.png", "Building9.png", "Building1.png", ]
 	var currentCell = 0;
    	var correctAnswer;
    	var clicked;
@@ -41,7 +43,7 @@ $(document).ready(function() {
 				for(j = 0; j < cellTest[i].length; j++){
 					if($(this).attr('id') == cellTest[i][j]){
 						console.log($(this).attr('id') + " = true");
-						$(this).html($(this).attr('id'));
+						//$(this).html($(this).attr('id'));
 						for(k = 0; k < cellInfo[tempNum][2].length; k++)				
 							tempString += SecurityLevels[k] + "<br>";
 						info = $(this)[ 0 ];
@@ -58,7 +60,7 @@ $(document).ready(function() {
 						tempNum++;
 					}
 					else if($(this).attr('id') != "c00"){
-						$(this).css("visibility", "hidden");
+						//$(this).css("visibility", "hidden");
 					}
 				}
 			}
@@ -85,6 +87,8 @@ $(document).ready(function() {
    	}
 
 	$("#table").on("click", "td", function() {
+
+		//$(this).css("background-color", "#bcb223");
 		shuffle($("#buttons"));
         info = $(this)[ 0 ];
         correctAnswer = cellInfo[jQuery.data(info, "test").CompanyNumber][2];
@@ -133,7 +137,7 @@ $(document).ready(function() {
 	$("#link3").on("click", function(){ 
 		clicked = $(this).index();
 	})
-	$("#link3").on("click", function(){
+	$("#link4").on("click", function(){
 		clicked = $(this).index();
 	})
 
@@ -144,6 +148,7 @@ $(document).ready(function() {
 		y = $.grep(arbitraryNumbers, function(value) {
  			return value != remove_Item;
 		});
+		console.log(clicked +"+"+ arbitraryNumbers)
 		if(jQuery.inArray(clicked, arbitraryNumbers) != -1){
 			passedLevel();
 			arbitraryNumbers = [1, 2, 3, 4];
@@ -153,4 +158,44 @@ $(document).ready(function() {
 			activeState = false;
 		}
 	})
+	$("#playBtn").on("click", function(){
+		$("#menu").css("display","none");
+
+	});
+
+	$("#helpBtn").on("click", function(){
+		$("#myModal").css("display", "block");
+
+	});
+
+
+	$(".close").on("click", function() {
+	    $("#myModal").css("display","none");
+	});
+
+	window.onclick = function(event) {
+	    if (event.target == $("#myModal")) {
+			$("#myModal").css("display", "none");
+	    }
+	}
+
+	var helpText = ["sdfjklsdfjklsdfjklsdfjklsdfjklsdfjklsdfjklsdfjklsdfjklsdfjklsdfjklsdfjklsdfjklsdfjklsdfjklsdfjklsdfjklsdfjklsdfjklsdfjklsdfjklsdfjklsdfjklsdfjklsdfjklsdfjklsdfjklsdfjklsdfjklsdfjklsdfjklsdfjklsdfjklsdfjkl", "asfhioasfhioasfhioasfhioasfhioasfhioasfhioasfhioasfhioasfhioasfhioasfhioasfhioasfhioasfhioasfhioasfhioasfhioasfhioasfhioasfhioasfhioasfhioasfhioasfhioasfhioasfhioasfhioasfhioasfhio", "asrhioasrhioasrhioasrhioasrhioasrhioasrhioasrhioasrhioasrhioasrhioasrhioasrhioasrhioasrhioasrhioasrhioasrhioasrhioasrhioasrhio", "ASJKRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR"];
+	var helpIndex = 0;
+
+
+	$("#nextButton").on("click", function(){
+		helpIndex++;
+		$("#helpText").text(helpText[helpIndex]);
+		if(helpIndex != 0){
+			$("#backButton").css("visibility", "visible");
+		}
+	});
+	$("#backButton").on("click", function(){
+		helpIndex--;
+		$("#helpText").text(helpText[helpIndex]);
+		if(helpIndex == 0){
+			$("#backButton").css("visibility", "hidden");
+		}
+	});
+
 });
