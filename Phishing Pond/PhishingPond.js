@@ -41,7 +41,7 @@ $(document).ready(function() {
 					[["Bank of OSA"], ["9th largest bank in the world. They transfer and handle billions of various currencies every single minute."], [1, 2, 4],
 					["hello", "it", "is", "me"]]
 					];	
-					
+
 	var SecurityLevels = ["Spam mail filter", "Malware detection", "Spoofed link training", "Anti-spear phishing training"];
 	var cellTest = [["c00"], ["c10"], ["c11"], ["c21", "c12"],["c13"]];	
 	/*var cellImage=["Building1.png", "Building2.png", "Building3.png", "Building4.png", "Building5.png", "Building6.png", "Building7.png", "Building8.png", "Building9.png", "Building1.png", ]*/
@@ -69,7 +69,7 @@ $(document).ready(function() {
 						console.log($(this).attr('id') + " = true");
 						//$(this).html($(this).attr('id'));
 						for(k = 0; k < cellInfo[tempNum][2].length; k++)				
-							tempString += SecurityLevels[k] + "<br>";
+							tempString += SecurityLevels[cellInfo[tempNum][2][k] + "<br>";
 						info = $(this)[ 0 ];
 			        	jQuery.data( info, "test", {
 			        	CompanyNumber: tempNum,
