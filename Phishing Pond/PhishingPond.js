@@ -82,6 +82,20 @@ $(document).ready(function() {
 	        }
 	  	});
 	}
+
+	$("#restart").on("click", function(){
+		infectedLevel = 0;
+		$("#table td").each(function() {
+			if($(this).attr('id') != "c00"){
+				$(this).css("visibility", "hidden");
+			}
+			$(this).css("background-color", "#F1F1F1");
+			$(this).css("pointer-events", "auto");
+	  	});
+		$("#winScreen").css("visibility", "hidden");
+		
+		
+	});
 	
 	/*$("#restart").on("click", function(){
 		infectedLevel = 1;
@@ -110,9 +124,7 @@ $(document).ready(function() {
    	}
 
 	$("#table").on("click", "td", function() {
-
 		$(this).css("background-color", "#bcb223");
-		shuffle($("#buttons"));
         info = $(this)[ 0 ];
         correctAnswer = cellInfo[jQuery.data(info, "test").CompanyNumber][2];
         $('#title').html(jQuery.data(info, "test").Title);
@@ -131,6 +143,8 @@ $(document).ready(function() {
      		activeState = false;
     	}
      	targetedCell = $(this).attr('id');
+     	shuffle($("#buttons"));
+     	$("#buttons td").css("pointer-events", "auto");
     });
 
     function shuffle(tbl) {
@@ -165,20 +179,21 @@ $(document).ready(function() {
 	})
 
 	$("#buttons td").on("click", function(){
-	   	var arbitraryNumbers = [1, 2, 3, 4];
 		var remove_Item = clicked;
+		var saveShit = cellInfo[jQuery.data(info, "test").CompanyNumber][2];
 
-		y = $.grep(arbitraryNumbers, function(value) {
+		y = $.grep(cellInfo[jQuery.data(info, "test").CompanyNumber][2], function(value) {
  			return value != remove_Item;
 		});
-		console.log(clicked +"+"+ arbitraryNumbers)
-		if(jQuery.inArray(clicked, arbitraryNumbers) != -1){
+		console.log(clicked +"+"+ cellInfo[jQuery.data(info, "test").CompanyNumber][2])
+		if(jQuery.inArray(clicked, cellInfo[jQuery.data(info, "test").CompanyNumber][2]) != -1){
 			passedLevel();
-			arbitraryNumbers = [1, 2, 3, 4];
+			cellInfo[jQuery.data(info, "test").CompanyNumber][2] = saveShit;
 			$("#"+targetedCell).css("background-color", "red");
 			$("#"+targetedCell).css("pointer-events", "none");
 			TransitionOptions(); 
 			activeState = false;
+			$("#buttons td").css("pointer-events", "none");
 		}
 	})
 	$("#playBtn").on("click", function(){
