@@ -126,7 +126,7 @@ $(document).ready(function() {
 	$("#table").on("click", "td", function() {
 		$(this).css("background-color", "#bcb223");
         info = $(this)[ 0 ];
-        correctAnswer = cellInfo[jQuery.data(info, "test").CompanyNumber][2];
+        wrongAnswer = cellInfo[jQuery.data(info, "test").CompanyNumber][2];
         $('#title').html(jQuery.data(info, "test").Title);
         $('#desc').html(jQuery.data(info,"test").Description);
         $('#secText').html(jQuery.data(info,"test").SecInfo);
@@ -166,36 +166,42 @@ $(document).ready(function() {
   }
 
 	$("#link1").on("click", function(){ 
-		clicked = $(this).index(); 
+		clicked = $(this).attr('class'); 
 	})
 	$("#link2").on("click", function(){
-		clicked = $(this).index();
+		clicked = $(this).attr('class');
 	})
 	$("#link3").on("click", function(){ 
-		clicked = $(this).index();
+		clicked = $(this).attr('class');
 	})
 	$("#link4").on("click", function(){
-		clicked = $(this).index();
+		clicked = $(this).attr('class');
 	})
 
 	$("#buttons td").on("click", function(){
-		var remove_Item = clicked;
-		var saveShit = cellInfo[jQuery.data(info, "test").CompanyNumber][2];
+	   	var arbitraryNumbers = [1, 2, 3, 4];
+	   	var remove_Item;
 
-		y = $.grep(cellInfo[jQuery.data(info, "test").CompanyNumber][2], function(value) {
+		for(i = 0; i < wrongAnswer.length; i++){
+			arbitraryNumbers = $.grep(arbitraryNumbers, function(value) {
+			remove_Item = wrongAnswer[i];
+			console.log("Removed: " + remove_Item);
  			return value != remove_Item;
 		});
-		console.log(clicked +"+"+ cellInfo[jQuery.data(info, "test").CompanyNumber][2])
-		if(jQuery.inArray(clicked, cellInfo[jQuery.data(info, "test").CompanyNumber][2]) != -1){
+		}
+
+		console.log("Clicked: " + clicked +" Array: "+ arbitraryNumbers)
+		if(jQuery.inArray(parseInt(clicked), arbitraryNumbers) != -1){
 			passedLevel();
-			cellInfo[jQuery.data(info, "test").CompanyNumber][2] = saveShit;
 			$("#"+targetedCell).css("background-color", "red");
 			$("#"+targetedCell).css("pointer-events", "none");
 			TransitionOptions(); 
 			activeState = false;
 			$("#buttons td").css("pointer-events", "none");
 		}
+		arbitraryNumbers = [1, 2, 3, 4];
 	})
+
 	$("#playBtn").on("click", function(){
 		$("#menu").css("display","none");
 
