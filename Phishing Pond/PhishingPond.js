@@ -223,6 +223,7 @@ $(document).ready(function() {
 			TransitionOptions(); 
 			activeState = false;
 			$("#buttons td").css("pointer-events", "none");
+			$("#buttons td").html("");
 		}
 		arbitraryNumbers = [1, 2, 3, 4];
 	})
